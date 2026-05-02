@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaii Nails | Cute Sets, Big Dreams</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            balloon: ['Baloo 2', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            bubble: '#fff0f7',
+            candy: '#ff7ab6',
+            hotpink: '#ff3f9f',
+            blush: '#ffd6ea',
+            cream: '#fffaf2',
+            cocoa: '#7b3f61',
+            lavender: '#b99cff'
+          },
+          boxShadow: {
+            cute: '0 18px 50px rgba(255, 63, 159, 0.22)',
+            soft: '0 12px 35px rgba(123, 63, 97, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; }
+
+    .sparkle-bg {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 122, 182, .35) 0 12%, transparent 13%),
+        radial-gradient(circle at 80% 10%, rgba(185, 156, 255, .32) 0 10%, transparent 11%),
+        radial-gradient(circle at 70% 80%, rgba(255, 214, 234, .8) 0 16%, transparent 17%),
+        linear-gradient(135deg, #fff0f7 0%, #fffaf2 45%, #ffe0f1 100%);
+    }
+
+    .kitty-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kitty-card::before,
+    .kitty-card::after {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background: #fff;
+      border: 3px solid #ff7ab6;
+      border-radius: 50%;
+      top: -12px;
+      z-index: 1;
+    }
+
+    .kitty-card::before { left: 24px; }
+    .kitty-card::after { left: 58px; }
+
+    .floaty { animation: floaty 5s ease-in-out infinite; }
+    .floaty-delay { animation: floaty 6s ease-in-out infinite; animation-delay: 1s; }
+    .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+    .pop-in { animation: popIn .8s cubic-bezier(.18,.89,.32,1.28) both; }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 rgba(255, 63, 159, 0); }
+      50% { box-shadow: 0 0 35px rgba(255, 63, 159, .45); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(.92) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .bow {
+      width: 56px;
+      height: 38px;
+      position: relative;
+    }
+
+    .bow::before, .bow::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 34px;
+      background: #ff3f9f;
+      border-radius: 50% 50% 45% 45%;
+      top: 2px;
+    }
+
+    .bow::before { left: 1px; transform: rotate(-32deg); }
+    .bow::after { right: 1px; transform: rotate(32deg); }
+    .bow span {
+      position: absolute;
+      left: 20px;
+      top: 11px;
+      width: 16px;
+      height: 16px;
+      background: #fff0f7;
+      border: 3px solid #ff3f9f;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nail-chip:hover {
+      transform: translateY(-8px) rotate(-1deg);
+    }
+
+    .mobile-menu {
+      transform: translateY(-120%);
+      transition: transform .35s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateY(0);
+    }
+
+    .balloon-text {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ff3f9f;
+      position: relative;
+      text-shadow:
+        2px 2px 0 #fff,
+        4px 4px 0 #ffb6d9,
+        6px 6px 12px rgba(255, 63, 159, 0.35);
+    }
+
+    .shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.8), transparent);
+      transform: skewX(-20deg);
+      animation: shimmerMove 1.5s ease forwards;
+    }
+
+    .logo-sparkle-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .loop-sparkle {
+      position: absolute;
+      color: #ff7ab6;
+      text-shadow: 0 0 12px rgba(255, 63, 159, .45);
+      animation: tinySparkle 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .sparkle-one { top: -18px; left: 10px; font-size: 1rem; }
+    .sparkle-two { top: -14px; right: -14px; font-size: .9rem; animation-delay: .7s; }
+    .sparkle-three { bottom: -16px; right: 18px; font-size: .8rem; animation-delay: 1.4s; }
+
+    @keyframes shimmerMove {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    @keyframes tinySparkle {
+      0%, 100% { opacity: .25; transform: scale(.75) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.25) rotate(16deg); }
+    }
+
+    #splashScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 214, 234, .95) 0 12%, transparent 13%),
+        radial-gradient(circle at 80% 30%, rgba(185, 156, 255, .6) 0 10%, transparent 11%),
+        radial-gradient(circle at 50% 90%, rgba(255, 122, 182, .65) 0 15%, transparent 16%),
+        linear-gradient(135deg, #fff0f7, #fffaf2, #ffe0f1, #f7d9ff);
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    #splashScreen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-logo {
+      animation: splashPop 1.25s cubic-bezier(.18,.89,.32,1.28) both, splashFloat 2s ease-in-out infinite 1.2s;
+    }
+
+    .splash-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: .75;
+      animation: orbDance 3s ease-in-out infinite;
+    }
+
+    .splash-sparkle {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: sparkleSpin 2.5s linear infinite;
+    }
+
+    @keyframes splashPop {
+      0% { opacity: 0; transform: scale(.55) rotate(-8deg); }
+      70% { opacity: 1; transform: scale(1.1) rotate(2deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @keyframes splashFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.03); }
+    }
+
+    @keyframes orbDance {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(18px, -18px) scale(1.12); }
+    }
+
+    @keyframes sparkleSpin {
+      0% { transform: rotate(0deg) scale(1); opacity: .55; }
+      50% { transform: rotate(180deg) scale(1.25); opacity: 1; }
+      100% { transform: rotate(360deg) scale(1); opacity: .55; }
+    }
+
+    @keyframes loadBar {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-bubble text-cocoa overflow-x-hidden">
+  <div id="splashScreen">
+    <div class="splash-orb w-32 h-32 bg-hotpink/30 top-16 left-10"></div>
+    <div class="splash-orb w-44 h-44 bg-lavender/35 bottom-16 right-10" style="animation-delay:.4s"></div>
+    <div class="splash-orb w-24 h-24 bg-candy/35 top-28 right-24" style="animation-delay:.8s"></div>
+    <div class="splash-sparkle top-16 right-[18%]">✦</div>
+    <div class="splash-sparkle bottom-20 left-[18%]" style="animation-delay:.5s">♡</div>
+    <div class="splash-sparkle top-[42%] left-[8%]" style="animation-delay:1s">☆</div>
+
+    <div class="splash-logo text-center px-6">
+      <div class="mx-auto mb-5 bow scale-125"><span></span></div>
+      <h1 class="balloon-text text-6xl sm:text-8xl md:text-9xl leading-none">Jaii Nails</h1>
+      <p class="mt-5 text-cocoa/70 font-bold tracking-[.28em] uppercase text-xs sm:text-sm">Cute sets. Big dreams.</p>
+      <div class="mt-8 mx-auto w-48 h-3 rounded-full bg-white/70 overflow-hidden shadow-soft">
+        <div class="h-full bg-hotpink rounded-full animate-[loadBar_3s_ease-in-out_forwards]"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed top-0 left-0 right-0 z-50 bg-white/75 backdrop-blur-xl border-b border-pink-100">
+    <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3 group">
+        <div>
+          <p class="balloon-text text-2xl leading-none">Jaii Nails</p>
+          <p class="text-[10px] uppercase tracking-[.22em] text-cocoa/60">Cute sets. Big dreams.</p>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+        <a href="#story" class="hover:text-hotpink transition">Her Story</a>
+        <a href="#services" class="hover:text-hotpink transition">Services</a>
+        <a href="#gallery" class="hover:text-hotpink transition">Gallery</a>
+        <a href="#foundation" class="hover:text-hotpink transition">Foundation</a>
+        <a href="#booking" class="px-5 py-3 rounded-full bg-hotpink text-white hover:bg-candy hover:-translate-y-1 transition shadow-cute">Book Now</a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden w-11 h-11 rounded-full bg-blush text-hotpink font-bold">☰</button>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-pink-100 p-5">
+      <div class="grid gap-4 font-semibold">
+        <a href="#story" class="mobileLink">Her Story</a>
+        <a href="#services" class="mobileLink">Services</a>
+        <a href="#gallery" class="mobileLink">Gallery</a>
+        <a href="#foundation" class="mobileLink">Foundation</a>
+        <a href="#booking" class="mobileLink px-5 py-3 rounded-full bg-hotpink text-white text-center">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <header id="home" class="sparkle-bg min-h-screen pt-32 pb-20 relative overflow-hidden">
+    <div class="absolute top-28 left-8 text-5xl floaty">♡</div>
+    <div class="absolute top-36 right-10 text-5xl floaty-delay">✦</div>
+    <div class="absolute bottom-16 left-12 text-6xl floaty-delay">☆</div>
+
+    <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="pop-in text-center lg:text-left">
+        <h1 class="font-fredoka text-5xl sm:text-6xl lg:text-7xl leading-[.95] text-cocoa">
+          Tiny hands,
+          <span class="text-hotpink block">big dreams.</span>
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-cocoa/75 max-w-xl mx-auto lg:mx-0">
+          Welcome to Jaii Nails, a sweet and colorful nail brand created from a young girl’s love for beauty, creativity, and learning the craft one design at a time.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#booking" class="pulse-glow px-8 py-4 rounded-full bg-hotpink text-white font-bold shadow-cute hover:scale-105 transition">Schedule Appointment</a>
+          <a href="#gallery" class="px-8 py-4 rounded-full bg-white text-hotpink font-bold border-2 border-pink-200 hover:bg-blush hover:scale-105 transition">View Nail Ideas</a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0">
+          <div class="bg-white/75 rounded-3xl p-4 shadow-soft text-center hover:-translate-y-2 transition">
+            <p class="text-3xl">💅🏾</p>
+            <p class="text-xs font-bold mt-1">Pretty Sets</p>
+          </div>
+          <div class="bg-white/75 rounded-3xl p-4 shadow-soft text-center hover:-translate-y-2 transition">
+            <p class="text-3xl">🎀</p>
+            <p class="text-xs font-bold mt-1">Soft Glam</p>
+          </div>
+          <div class="bg-white/75 rounded-3xl p-4 shadow-soft text-center hover:-translate-y-2 transition">
+            <p class="text-3xl">✨</p>
+            <p class="text-xs font-bold mt-1">Dream Big</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative pop-in">
+        <div class="absolute -top-8 -left-5 w-28 h-28 bg-white rounded-full border-8 border-blush floaty"></div>
+        <div class="absolute -bottom-7 -right-2 w-36 h-36 bg-lavender/35 rounded-full blur-sm floaty-delay"></div>
+
+        <div class="relative rounded-[3rem] bg-white p-4 shadow-cute rotate-2 hover:rotate-0 transition duration-500">
+          <img
+            src="nailset.png"
+            alt="Beautiful manicured hands with pink nail design"
+            class="w-full h-[430px] object-cover rounded-[2.4rem]"
+          />
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full px-6 py-3 shadow-cute border border-pink-100 flex items-center gap-3">
+            <span class="text-2xl">🎀</span>
+            <span class="logo-sparkle-wrap">
+              <span class="loop-sparkle sparkle-one">✦</span>
+              <span class="loop-sparkle sparkle-two">♡</span>
+              <span class="loop-sparkle sparkle-three">☆</span>
+              <span id="heroLogo" class="balloon-text text-xl whitespace-nowrap">Jaii Nails</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="story" class="py-24 bg-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#ff7ab6 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="relative max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <img
+            src="jaiinails.jpeg"
+            alt="Stylish nail art on hands"
+            class="rounded-[3rem] shadow-cute w-full h-[420px] object-cover"
+          />
+        </div>
+        <div class="reveal">
+          <p class="font-bold text-hotpink uppercase tracking-[.25em] text-sm">The story</p>
+          <h2 class="font-fredoka text-4xl sm:text-5xl mt-3 text-cocoa">A young artist learning one set at a time.</h2>
+          <p class="mt-6 text-cocoa/75 text-lg leading-relaxed">
+            Nyla Jaii is the young creator behind Jaii Nails, a growing brand built from passion, creativity, and a love for nail design. From a very early age, Nyla showed a natural interest in doing nails, spending her time learning, practicing, and finding her own style through each set she created.
+          </p>
+          <p class="mt-4 text-cocoa/75 text-lg leading-relaxed">
+            Daily, she takes time to study nail videos, practice new ideas, and learn from the work she sees in local nail shops. She is self-taught, patient with the process, and excited to keep improving with every set.
+          </p>
+          <p class="mt-4 text-cocoa/75 text-lg leading-relaxed">
+            Her middle name is Jaii, so the brand carries something personal. This page is not just about booking nails. It is about supporting a young founder as she builds confidence, skill, and a dream from the ground up with love from her family behind her.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-24 bg-bubble">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center reveal">
+          <p class="font-bold text-hotpink uppercase tracking-[.25em] text-sm">Services</p>
+          <h2 class="font-fredoka text-4xl sm:text-5xl mt-3 text-cocoa">Nail looks made with care and creativity</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-cocoa/70">Choose a simple polish refresh, a signature Jaii-inspired set, or a custom idea made around your favorite colors, sparkle, and style.</p>
+        </div>
+
+        <div class="mt-14 grid md:grid-cols-3 gap-6">
+          <article class="reveal nail-chip bg-white rounded-[2.5rem] p-7 shadow-soft border border-pink-100 transition duration-300">
+            <div class="w-16 h-16 rounded-full bg-blush flex items-center justify-center text-3xl mb-5">💗</div>
+            <h3 class="font-fredoka text-3xl text-hotpink">Mini Mani</h3>
+            <p class="mt-3 text-cocoa/70">A gentle polish refresh with simple shaping, clean color, and a pretty finish.</p>
+            <p class="mt-6 font-fredoka text-3xl text-cocoa">$20+</p>
+          </article>
+
+          <article class="reveal nail-chip bg-white rounded-[2.5rem] p-7 shadow-cute border-2 border-candy transition duration-300 scale-100 md:scale-105">
+            <div class="w-16 h-16 rounded-full bg-hotpink text-white flex items-center justify-center text-3xl mb-5">🎀</div>
+            <h3 class="font-fredoka text-3xl text-hotpink">Jaii Set</h3>
+            <p class="mt-3 text-cocoa/70">A playful signature set with color, sparkle, bows, charms, and sweet nail art details.</p>
+            <p class="mt-6 font-fredoka text-3xl text-cocoa">$35+</p>
+          </article>
+
+          <article class="reveal nail-chip bg-white rounded-[2.5rem] p-7 shadow-soft border border-pink-100 transition duration-300">
+            <div class="w-16 h-16 rounded-full bg-lavender/35 flex items-center justify-center text-3xl mb-5">✨</div>
+            <h3 class="font-fredoka text-3xl text-hotpink">Custom Art</h3>
+            <p class="mt-3 text-cocoa/70">Bring a color theme, birthday idea, soft-glam look, or creative design inspiration.</p>
+            <p class="mt-6 font-fredoka text-3xl text-cocoa">$45+</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+          <div>
+            <p class="font-bold text-hotpink uppercase tracking-[.25em] text-sm">Nail inspo</p>
+            <h2 class="font-fredoka text-4xl sm:text-5xl mt-3 text-cocoa">Soft colors, glossy finishes, and creative details</h2>
+          </div>
+          <a href="#booking" class="inline-flex justify-center px-6 py-3 rounded-full bg-hotpink text-white font-bold hover:scale-105 transition shadow-cute">Book a Set</a>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <img class="reveal rounded-[2rem] h-72 w-full object-cover shadow-soft hover:scale-[1.03] transition" src="blue.png" alt="Pink nail art on hands">
+          <img class="reveal rounded-[2rem] h-72 w-full object-cover shadow-soft hover:scale-[1.03] transition" src="greenwhite.png" alt="Detailed manicure on hands">
+          <img class="reveal rounded-[2rem] h-72 w-full object-cover shadow-soft hover:scale-[1.03] transition" src="starsdots.png" alt="Stylish nails close up">
+          <img class="reveal rounded-[2rem] h-72 w-full object-cover shadow-soft hover:scale-[1.03] transition" src="yellow.png" alt="Beautiful manicure close up">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-cocoa text-white relative overflow-hidden">
+      <div class="absolute -top-20 -left-20 w-64 h-64 bg-hotpink/30 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-lavender/30 rounded-full blur-3xl"></div>
+      <div class="relative max-w-5xl mx-auto px-5 text-center reveal">
+        <h2 class="font-fredoka text-4xl sm:text-5xl">A small nail brand with a big heart behind it.</h2>
+        <p class="mt-5 text-white/75 text-lg">Every appointment supports a young creative learning discipline, customer care, artistry, and entrepreneurship in real time.</p>
+      </div>
+    </section>
+    <section id="foundation" class="py-24 bg-white relative overflow-hidden">
+      <div class="absolute top-10 right-10 text-6xl floaty opacity-40">✦</div>
+      <div class="absolute bottom-10 left-8 text-6xl floaty-delay opacity-40">♡</div>
+
+      <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="font-bold text-hotpink uppercase tracking-[.25em] text-sm">Coming Soon</p>
+          <h2 class="font-fredoka text-4xl sm:text-5xl mt-3 text-cocoa">Jaii Nails Foundation</h2>
+          <p class="mt-6 text-cocoa/75 text-lg leading-relaxed">
+            Jaii Nails Foundation is a future education program being created to help teen girls explore the art, discipline, and confidence of becoming a nail technician.
+          </p>
+          <p class="mt-4 text-cocoa/75 text-lg leading-relaxed">
+            The foundation is inspired by Jaii’s own self-taught journey. After school, she watches tutorials, studies different techniques, practices what she learns, and visits local nail shops to better understand the craft. The goal is to one day give other girls the same encouragement, tools, and confidence to begin their own creative path.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#booking" class="px-7 py-4 rounded-full bg-hotpink text-white font-bold shadow-cute hover:bg-candy hover:scale-105 transition">Join the Interest List</a>
+            <a href="#story" class="px-7 py-4 rounded-full bg-bubble text-hotpink font-bold border-2 border-pink-200 hover:bg-blush hover:scale-105 transition">Read Jaii’s Story</a>
+          </div>
+        </div>
+
+        <div class="reveal grid gap-5">
+          <div class="rounded-[3rem] bg-bubble p-7 shadow-cute border border-pink-100 hover:-translate-y-2 transition">
+            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-3xl shadow-soft">💅🏾</div>
+            <h3 class="font-fredoka text-3xl text-hotpink mt-5">Teen Nail Tech Training</h3>
+            <p class="mt-3 text-cocoa/70">A beginner-friendly program covering nail prep, polish application, design basics, sanitation awareness, practice habits, and client-ready confidence.</p>
+          </div>
+
+          <div class="rounded-[3rem] bg-cream p-7 shadow-soft border border-pink-100 hover:-translate-y-2 transition">
+            <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-3xl shadow-soft">🎓</div>
+            <h3 class="font-fredoka text-3xl text-hotpink mt-5">Certificate of Completion</h3>
+            <p class="mt-3 text-cocoa/70">Students who complete the future program will receive a Jaii Nails Foundation Certificate of Completion as a celebration of their effort, growth, and commitment to learning.</p>
+          </div>
+
+          <div class="rounded-[3rem] bg-white p-7 shadow-soft border border-pink-100 hover:-translate-y-2 transition">
+            <div class="w-16 h-16 rounded-full bg-blush flex items-center justify-center text-3xl shadow-soft">✨</div>
+            <h3 class="font-fredoka text-3xl text-hotpink mt-5">Confidence + Entrepreneurship</h3>
+            <p class="mt-3 text-cocoa/70">Beyond nails, the foundation will encourage girls to believe in their ideas, respect their craft, build positive habits, and see themselves as young business owners.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="py-24 sparkle-bg">
+      <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-start">
+        <div class="reveal bg-white/80 backdrop-blur-xl rounded-[3rem] p-8 shadow-cute border border-pink-100 sticky top-28">
+          <div class="bow"><span></span></div>
+          <h2 class="font-fredoka text-4xl mt-4 text-cocoa">Request your appointment</h2>
+          <p class="mt-4 text-cocoa/70">Send your appointment request with your service, preferred date, and design idea. Jaii Nails will follow up to confirm the details before your visit.</p>
+          <div class="mt-8 space-y-4 text-sm">
+            <div class="flex gap-3 items-start">
+              <span class="w-8 h-8 rounded-full bg-blush flex items-center justify-center">1</span>
+              <p>Choose your service and preferred date.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="w-8 h-8 rounded-full bg-blush flex items-center justify-center">2</span>
+              <p>Share your nail idea, color story, or inspiration.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="w-8 h-8 rounded-full bg-blush flex items-center justify-center">3</span>
+              <p>Wait for a confirmation message before arriving.</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="bookingForm" class="reveal bg-white rounded-[3rem] p-6 sm:p-8 shadow-cute border border-pink-100">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <label class="grid gap-2 font-semibold text-sm">
+              First Name
+              <input required type="text" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100" placeholder="Your name">
+            </label>
+            <label class="grid gap-2 font-semibold text-sm">
+              Parent/Guardian Name
+              <input required type="text" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100" placeholder="Parent name">
+            </label>
+            <label class="grid gap-2 font-semibold text-sm">
+              Email
+              <input required type="email" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100" placeholder="hello@email.com">
+            </label>
+            <label class="grid gap-2 font-semibold text-sm">
+              Phone
+              <input required type="tel" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100" placeholder="(555) 555-5555">
+            </label>
+            <label class="grid gap-2 font-semibold text-sm">
+              Service
+              <select required class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100 bg-white">
+                <option value="">Choose one</option>
+                <option>Mini Mani</option>
+                <option>Jaii Set</option>
+                <option>Custom Nail Art</option>
+              </select>
+            </label>
+            <label class="grid gap-2 font-semibold text-sm">
+              Preferred Date
+              <input required type="date" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100">
+            </label>
+          </div>
+
+          <label class="grid gap-2 font-semibold text-sm mt-5">
+            Nail Idea / Color Story
+            <textarea rows="5" class="rounded-2xl border border-pink-200 px-4 py-3 outline-none focus:ring-4 focus:ring-pink-100" placeholder="Pink bows, glitter, soft glam, birthday set, charms, favorite colors..."></textarea>
+          </label>
+
+          <button type="submit" class="mt-6 w-full px-8 py-4 rounded-full bg-hotpink text-white font-bold shadow-cute hover:bg-candy hover:scale-[1.02] transition">Send Appointment Request</button>
+
+          <p id="formMessage" class="hidden mt-5 rounded-2xl bg-bubble p-4 text-center font-bold text-hotpink"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white py-10 border-t border-pink-100">
+    <div class="max-w-7xl mx-auto px-5 flex flex-col md:flex-row gap-4 items-center justify-between text-center md:text-left">
+      <div>
+        <p class="balloon-text text-3xl">Jaii Nails</p>
+        <p class="text-sm text-cocoa/60">© 2026 Jaii Nails. All Rights Reserved | Powered By RoboTechi Co.</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="#home" class="w-11 h-11 rounded-full bg-bubble flex items-center justify-center hover:bg-blush transition">↑</a>
+        <a href="#booking" class="px-5 py-3 rounded-full bg-hotpink text-white font-bold hover:bg-candy transition">Book</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-cocoa text-white px-5 py-3 rounded-full shadow-cute opacity-0 pointer-events-none transition z-50 text-sm font-semibold">
+    Welcome to Jaii Nails 🎀
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobileLink');
+    const form = document.getElementById('bookingForm');
+    const formMessage = document.getElementById('formMessage');
+    const toast = document.getElementById('toast');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      menuBtn.textContent = mobileMenu.classList.contains('open') ? '×' : '☰';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formMessage.textContent = 'Thank you! Your Jaii Nails appointment request was sent. We will follow up soon 🎀';
+      formMessage.classList.remove('hidden');
+      form.reset();
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    const splashScreen = document.getElementById('splashScreen');
+    const heroLogo = document.getElementById('heroLogo');
+
+    setTimeout(() => {
+      splashScreen.classList.add('hide');
+
+      // trigger shimmer after splash
+      setTimeout(() => {
+        heroLogo.classList.add('shimmer');
+      }, 400);
+
+    }, 3000);
+
+    setTimeout(() => {
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.add('opacity-0');
+        toast.classList.remove('opacity-100');
+      }, 2600);
+    }, 900);
+  </script>
+</body>
+</html>
